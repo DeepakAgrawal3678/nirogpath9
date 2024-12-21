@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background: linear-gradient(135deg, #1a0f2e 0%, #2d1b36 100%);
+    -webkit-tap-highlight-color: transparent;
+    font-feature-settings: "salt" 1;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+  }
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #f97316, #e11d48);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at top right, #2d1b36 0%, #1a0f2e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(249, 115, 22, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #f97316 0%, #e11d48 100%);
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.2);
+}
+
+.primary-button:hover {
+  background: linear-gradient(135deg, #ea580c 0%, #be123c 100%);
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+}
+
+.accent-glow {
+  position: relative;
+}
+
+.accent-glow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+  z-index: -1;
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-white;
+  }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 640px) {
+  .card-hover:hover {
+    transform: none;
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(8px);
+  }
+}
